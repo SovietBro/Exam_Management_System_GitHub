@@ -7,7 +7,6 @@
         public static void Add()
         {
             Grade grade = new Grade();
-            grade.Id = IdGenerator.GenerateId();
 
             StudentService.ViewAll();
             Console.Write("Student Id: ");
@@ -22,38 +21,46 @@
 
             Grades.Add(grade);
 
-            Console.WriteLine("Grade added. Id: " + grade.Id);
+            Console.WriteLine("Grade added.");
         }
 
         public static void ViewAll()
         {
             foreach (Grade grade in Grades)
             {
-                Console.WriteLine("Id: " + grade.Id +
-                " | StudentId: " + grade.StudentId +
-                " | CourseId: " + grade.CourseId +
-                " | Score: " + grade.Score);
+                Console.WriteLine("StudentId: " + grade.StudentId +
+                                  " | CourseId: " + grade.CourseId +
+                                  " | Score: " + grade.Score);
             }
         }
 
         public static void Remove()
         {
             ViewAll();
-            Console.Write("Grade Id: ");
-            string id = Console.ReadLine();
+            Console.Write("Student Id: ");
+            string studentId = Console.ReadLine();
 
-            Grades.RemoveAll(g => g.Id == id);
+            Console.Write("Course Id: ");
+            string courseId = Console.ReadLine();
+
+            Grades.RemoveAll(g =>
+                g.StudentId == studentId &&
+                g.CourseId == courseId);
         }
 
         public static void Update()
         {
             ViewAll();
-            Console.Write("Grade Id: ");
-            string id = Console.ReadLine();
+            Console.Write("Student Id: ");
+            string studentId = Console.ReadLine();
+
+            Console.Write("Course Id: ");
+            string courseId = Console.ReadLine();
 
             foreach (Grade grade in Grades)
             {
-                if (grade.Id == id)
+                if (grade.StudentId == studentId &&
+                    grade.CourseId == courseId)
                 {
                     Console.Write("New Score: ");
                     grade.Score = double.Parse(Console.ReadLine());

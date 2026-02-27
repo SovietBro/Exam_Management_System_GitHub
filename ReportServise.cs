@@ -42,13 +42,20 @@
         {
             CourseService.ViewAll();
             Console.Write("Course Id: ");
-            string id = Console.ReadLine();
+            string courseId = Console.ReadLine();
 
-            foreach (Student student in StudentService.Students)
+            foreach (Grade grade in GradeService.Grades)
             {
-                if (student.CourseIds.Contains(id))
+                if (grade.CourseId == courseId)
                 {
-                    Console.WriteLine(student.Name);
+                    foreach (Student student in StudentService.Students)
+                    {
+                        if (student.Id == grade.StudentId)
+                        {
+                            Console.WriteLine("Id: " + student.Id +
+                                              " | Name: " + student.Name);
+                        }
+                    }
                 }
             }
         }

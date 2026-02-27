@@ -12,9 +12,6 @@
             Console.Write("Name: ");
             teacher.Name = Console.ReadLine();
 
-            Console.Write("Email: ");
-            teacher.Email = Console.ReadLine();
-
             Teachers.Add(teacher);
 
             Console.WriteLine("Teacher added. Id: " + teacher.Id);
@@ -25,8 +22,7 @@
             foreach (Teacher teacher in Teachers)
             {
                 Console.WriteLine("Id: " + teacher.Id +
-                " | Name: " + teacher.Name +
-                " | Email: " + teacher.Email);
+                                  " | Name: " + teacher.Name);
             }
         }
 
@@ -51,9 +47,6 @@
                 {
                     Console.Write("New Name: ");
                     teacher.Name = Console.ReadLine();
-
-                    Console.Write("New Email: ");
-                    teacher.Email = Console.ReadLine();
                 }
             }
         }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ExamSystem
+﻿namespace ExamSystem
 {
     public static class Menu
     {
